@@ -1,10 +1,26 @@
+<?php 
+session_start();
+?>
 <meta charset=utf8>  
 <?php
 if($_POST["sName"]!=""){
-    $sName=$_POST["sName"];
-    echo "Your name:".$sName."<br/>";
+    $uID="1113320";
+    $uPWD="20";
+
+    $sID=$_POST["sID"];
+    echo "Your ID:".$sID."<br/>";
     $sPWD=$_POST["sPWD"];
     echo "Your password:".$sPWD."<br/>";
+    if($uID==$sID && $uPWD==$sPWD){
+        $_SESSION["check"]="Yes";
+        header("Location:success.php");
+    }
+    else{
+        $_SESSION["check"]="No";
+        header("Location:fail.php");
+    }
+    $sName=$_POST["sName"];
+    echo "Your name:".$sName."<br/>";
     $sCity=$_POST["sCity"];
     echo "Your city:".$sCity."<br/>";
     $sGender=$_POST["sGender"];
@@ -20,8 +36,6 @@ if($_POST["sName"]!=""){
     echo "Your email:".$sEmail."<br/>";
     $sFile=$_POST["sFile"];
     echo "Your file:".$sFile."<br/>";
-    $sID=$_POST["sID"];
-    echo "Your ID:".$sID."<br/>";
     $sETA=$_POST["sETA"];
     echo "Your Expectation:".$sETA."<br/>";
     $sSize=$_POST["sSize"];
